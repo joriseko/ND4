@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ND4.Show;
+using System;
 
 namespace ND4
 {
@@ -6,7 +7,13 @@ namespace ND4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            Menu menu = new Menu();
+
+            menu.ShowMenu();
+
+
+
         }
     }
 }
