@@ -45,8 +45,7 @@ namespace ND4.Show
                             mMenuChar = 'P';
                             Console.Clear();
                           //  Console.WriteLine(mMenuChar);
-                            playerSelectionMenu.P();
-                            playerSelectionMenu.any();
+                            playerSelectionMenu.PlayerStart();
                             needToRender = false;
                             break;
                         case ConsoleKey.Q:

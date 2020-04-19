@@ -9,11 +9,11 @@ namespace ND4.Show
         public bool IsActive { get; private set; } = false;
         private int x;
         private int y;
-        public int Pls;
+        public int Pls { get; private set; }
 
         
 
-        public Frame(int x, int y, int Pls)
+        public Frame(int x, int y, int Pls) //kursoriaus pradzia, zaideju kiekis
         {
             this.x = x;
             this.y = y;
@@ -21,7 +21,7 @@ namespace ND4.Show
             
 
         }
-
+      
 
 
         public void Render()
@@ -34,12 +34,11 @@ namespace ND4.Show
             }
             else
             {
+                Console.SetCursorPosition(x - 1, y);
+                Console.Write(' ');
                 Console.SetCursorPosition(x, y);
                 Console.Write(Pls);
-
             }
-
-
         }
 
         public void SetActive()
