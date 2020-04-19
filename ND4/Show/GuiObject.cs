@@ -19,6 +19,7 @@ namespace ND4.Show
             PX = px;
             PY = py;
         }
+        abstract public void Render();
 
     }
 }

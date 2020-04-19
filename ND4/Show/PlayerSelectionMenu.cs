@@ -4,46 +4,52 @@ using System.Text;
 
 namespace ND4.Show
 {
-    class PlayerSelectionMenu : GuiObject
+    class PlayerSelectionMenu
     {
+        private Frame frame;
+        
         private int[,] arrPlayer;
 
-        private Frame activePlayer;
+        private Frame activePlayer1;
+        private Frame activePlayer2;
+        private Frame activePlayer3;
+        private Frame activePlayer4;
+        private Frame activePlayer5;
+        private Frame activePlayer6;
 
-        public PlayerSelectionMenu() : base(0, 0, 0, 0)
+        private List<Frame> frames = new List<Frame>();
+
+        public PlayerSelectionMenu()
         {
-
-
-         //   activePlayer = new Frame(10, 0, 0, 1);
-
+           
             arrPlayer = new int[2, 3]
-        { {2, 3, 4},
-          {5, 6, 7}};
+          { {2, 3, 4},
+           {5, 6, 7}};
+
+            frames.Add(new Frame(10, 0, 2));
+            frames.Add(new Frame(20, 0, 3));
+            frames.Add(new Frame(30, 0, 4));
+            frames.Add(new Frame(10, 1, 5));
+            frames.Add(new Frame(20, 1, 6));
+            frames.Add(new Frame(30, 1, 7));
 
         }
-
-        public void Players()
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                int y = i + 5;
-                Console.SetCursorPosition(y + 5, 0);
-                Console.WriteLine(arrPlayer[0, 0]);
-                Console.SetCursorPosition(y + 5, 1);
-                Console.WriteLine(arrPlayer[1, 0]);
-            }
-        }
-
-
 
 
         public void P()
         {
-            activePlayer.Render();
-            Console.WriteLine(arrPlayer[0, 0]);
+            frames[0].Render();    
+            frames[1].SetActive();
+            frames[1].Render();
+            frames[2].Render();
+            frames[3].Render();
+            frames[4].Render();
+            frames[5].Render();
+    
         }
 
-
+        public void any()
+        { Console.WriteLine(frames[0].Pls); }
 
 
 
