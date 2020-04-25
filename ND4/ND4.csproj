@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Show\Frame.cs" />
     <Compile Remove="Show\GuiObject.cs" />
     <Compile Remove="Show\Window.cs" />
   </ItemGroup>

@@ -7,14 +7,14 @@ namespace ND4.Show
     class Menu
     {
 
-        private DiceSelectionMenu diceSelectionMenu;
+ 
         private PlayerSelectionMenu playerSelectionMenu;
+
 
 
         public Menu()
         {
             playerSelectionMenu = new PlayerSelectionMenu();
-            diceSelectionMenu = new DiceSelectionMenu();
 
         }
 
@@ -26,13 +26,12 @@ namespace ND4.Show
 
         private void StartMenuLoop()
         {
-            char mMenuChar;
-            bool needToRender= true;
-
-            Console.WriteLine("To start the game press P=play, Q=quit");
+            bool needToRender = true;
+            Console.WriteLine();
+            Console.WriteLine("To start the game press P-play, Q-quit");
             do
             {
-                
+
                 while (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo pressedChar = Console.ReadKey(true);
@@ -42,29 +41,19 @@ namespace ND4.Show
                     switch (pressedChar.Key)
                     {
                         case ConsoleKey.P:
-                            mMenuChar = 'P';
                             Console.Clear();
-                          //  Console.WriteLine(mMenuChar);
                             playerSelectionMenu.PlayerStart();
                             needToRender = false;
                             break;
                         case ConsoleKey.Q:
-                            mMenuChar = 'Q';
                             Console.Clear();
-                            Console.WriteLine(mMenuChar);
                             Environment.Exit(1);
-                            break;
-                        case ConsoleKey.T:
-                            mMenuChar = 'T';
-                            Console.Clear();
-                            Console.WriteLine(mMenuChar);
-                            diceSelectionMenu.ShowDiceMenu();
                             break;
                     }
                 }
             } while (needToRender);
 
-          
+
 
         }
 

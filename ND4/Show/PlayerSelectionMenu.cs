@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ND4.Controller;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,49 +7,46 @@ namespace ND4.Show
 {
     class PlayerSelectionMenu
     {
-        private Frame frame;
-
-        //private int[,] arrPlayer;
 
 
-        private List<Frame> frames = new List<Frame>();
+        //private List<MenuController> menuControllers = new List<MenuController>();
+        private List<MenuController> menuControllers = new List<MenuController>();
+        private DiceSelectionMenu diceSelectionMenu = new DiceSelectionMenu();
 
         public PlayerSelectionMenu()
         {
 
-            //   arrPlayer = new int[2, 3]
-            // { {2, 3, 4},
-            // {5, 6, 7}};
-
-            frames.Add(new Frame(10, 0, 2));
-            frames.Add(new Frame(20, 0, 3));
-            frames.Add(new Frame(30, 0, 4));
-            frames.Add(new Frame(10, 1, 5));
-            frames.Add(new Frame(20, 1, 6));
-            frames.Add(new Frame(30, 1, 7));
+            menuControllers.Add(new MenuController(10, 1, 2));
+            menuControllers.Add(new MenuController(20, 1, 3));
+            menuControllers.Add(new MenuController(30, 1, 4));
+            menuControllers.Add(new MenuController(10, 2, 5));
+            menuControllers.Add(new MenuController(20, 2, 6));
+            menuControllers.Add(new MenuController(30, 2, 7));
 
         }
 
         public void PlayerStart()
         {
-            P();
+            Console.WriteLine("Choose how many players to have (arrows up/down/left/right): ");
+            Players();
             StartPlayerMenuLoop();
         }
 
 
-        public void P()
+        public void Players()
         {
-            frames[0].SetActive();
-            frames[0].Render();
-            frames[1].Render();
-            frames[2].Render();
-            frames[3].Render();
-            frames[4].Render();
-            frames[5].Render();
+            menuControllers[0].SetActive();
+            menuControllers[0].Render();
+            menuControllers[1].Render();
+            menuControllers[2].Render();
+            menuControllers[3].Render();
+            menuControllers[4].Render();
+            menuControllers[5].Render();
         }
 
         private void StartPlayerMenuLoop()
         {
+            
             int P = 0;
             void MoveRight()
             {
@@ -73,7 +71,7 @@ namespace ND4.Show
             {
                 while (Console.KeyAvailable || needToRender)
                 {
-
+                    
                     ConsoleKeyInfo pressedChar = Console.ReadKey(true);
                     int hashCode = pressedChar.Key.GetHashCode();
                    
@@ -134,6 +132,11 @@ namespace ND4.Show
                                 P = P + 3;
                             }
                             break;
+                        case ConsoleKey.Enter:
+                            Console.Clear();
+                            diceSelectionMenu.StartDiceMenuLoop(menuControllers[P].Pls);
+                            needToRender = false;
+                            break;
                     } 
                 }
             } while (needToRender);
@@ -142,14 +145,14 @@ namespace ND4.Show
 
             void NewActive(int y)
             {
-                frames[y].SetActive();
-                frames[y].Render();
+                menuControllers[y].SetActive();
+                menuControllers[y].Render();
             }
 
             void OldInactive(int y)
             {
-                frames[y].SetInactive();
-                frames[y].Render();
+                menuControllers[y].SetInactive();
+                menuControllers[y].Render();
             }
 
 

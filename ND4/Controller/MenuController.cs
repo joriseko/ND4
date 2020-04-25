@@ -6,5 +6,47 @@ namespace ND4.Controller
 {
     class MenuController
     {
+        public bool IsActive { get; private set; } = false;
+        private int x;
+        private int y;
+        public int Pls { get; private set; }
+
+
+
+        public MenuController(int x, int y, int Pls) //kursoriaus pradzia, zaideju kiekis
+        {
+            this.x = x;
+            this.y = y;
+            this.Pls = Pls;
+        }
+
+
+
+        public void Render()
+        {
+            if (IsActive)
+            {
+                Console.SetCursorPosition(x - 1, y);
+                Console.Write('>');
+                Console.Write(Pls);
+            }
+            else
+            {
+                Console.SetCursorPosition(x - 1, y);
+                Console.Write(' ');
+                Console.SetCursorPosition(x, y);
+                Console.Write(Pls);
+            }
+        }
+
+        public void SetActive()
+        {
+            IsActive = true;
+        }
+        public void SetInactive()
+        {
+            IsActive = false;
+        }
+
     }
 }

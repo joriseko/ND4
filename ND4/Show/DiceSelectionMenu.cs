@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ND4.Controller;
+using ND4.Dice_Player;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,24 +9,21 @@ namespace ND4.Show
     class DiceSelectionMenu
     {
 
+        Dice dice;
+        Player player;
+        GameOverMenu gameOverMenu;
 
 
         public DiceSelectionMenu()
         {
 
-
-
         }
 
-        public void ShowDiceMenu()
+
+        public void StartDiceMenuLoop(int P)
         {
             Console.CursorVisible = false;
-            StartDiceMenuLoop();
-        }
-
-        private void StartDiceMenuLoop()
-        {
-            int D = 1;
+            int D = 3;
             bool needToRender = true;
             void Plus()
             {
@@ -36,7 +35,7 @@ namespace ND4.Show
                 D--;
             }
 
-            Console.WriteLine($"Choose how many dice to throw: {D}");
+            Console.WriteLine($"Players will have {D} dice (+/-).");
             do
             {
 
@@ -51,22 +50,29 @@ namespace ND4.Show
                         case ConsoleKey.OemPlus:
                             Plus();
                             Console.Clear();
-                            Console.WriteLine($"Choose how many dice to throw: {D}");
+                            Console.WriteLine($"Players will have {D} dice (+/-).");
                             break;
                         case ConsoleKey.OemMinus:
                             Minus();
                             if (D > 0)
                             {
                                 Console.Clear();
-                                Console.WriteLine($"Choose how many dice to throw: {D}");
+                                Console.WriteLine($"Players will have {D} dice (+/-).");
                             }
                             else
                             {
                                 Console.Clear();
                                 D = 1;
-                                Console.WriteLine($"Choose how many dice to throw: {D}");
+                                Console.WriteLine($"Players will have {D} dice (+/-).");
                             }
 
+                            break;
+                        case ConsoleKey.Enter:
+                            Console.Clear();
+                            needToRender = false;
+                            GameController gameController = new GameController(P, D);
+                           // GameOverMenu gameOverMenu = new GameOverMenu(P, D);
+                            gameController.StartPlay();
                             break;
                     }
                 }
