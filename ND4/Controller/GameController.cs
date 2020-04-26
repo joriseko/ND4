@@ -48,7 +48,7 @@ namespace ND4.Controller
                             count++;
                             Console.WriteLine();
                             Console.WriteLine("Roll dice till winner is clear!!!");
-                            System.Threading.Thread.Sleep(1000);
+                            System.Threading.Thread.Sleep(200);
                             needToThrowAgain = true;
                             Console.Clear();
                             

@@ -18,10 +18,8 @@ namespace ND4.Show
 
         public GameOverMenu()
         {
-           // this.player = player;
-           // this.dice = dice;
-
-
+          // this.player = player;
+          //  this.dice = dice;
         }
 
 
